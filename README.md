@@ -22,7 +22,17 @@ Un escáner de códigos de barras 1D de alto rendimiento y grado profesional, co
 - **Visión Artificial**: OpenCV, pyzbar, numpy
 - **Frontend**: HTML5, CSS3 (Glassmorphism), JavaScript (Chart.js)
 
-## 🚀 Instalación y Configuración
+## 🚀 Super Instalación (Un solo comando)
+
+Copia y pega esto en tu terminal (CMD o PowerShell) para clonar y arrancar el proyecto al instante:
+
+```bash
+git clone https://github.com/Ivancitoo-N/Barcode-scanner.git && cd Barcode-scanner && start.bat
+```
+
+---
+
+## 🛠 Instalación Paso a Paso (Manual)
 
 1. **Requisitos**: Asegúrate de tener **Python 3.8+** instalado.
 2. **Configuración**:

@@ -57,6 +57,7 @@ echo.
 echo [INFO] Starting Barcode Scanner...
 echo [INFO] Press Ctrl+C to stop.
 echo.
+start http://127.0.0.1:8000
 python -m uvicorn %MAIN_SCRIPT% --reload --host 127.0.0.1 --port 8000
 
 REM --- Deactivate on Exit ---
