@@ -1,79 +1,346 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barcode Scanner Pro - Showcase</title>
+    <title>Barcode Scanner Pro - El Futuro del Escaneo 1D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #00f2ff;
+            --secondary: #39ff14;
+            --accent: #ff00ff;
             --bg: #0a0a0c;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             background-color: var(--bg);
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            margin: 0;
+            color: #e0e0e0;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Background Animation --- */
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        /* --- Hero Section --- */
+        header {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
             text-align: center;
+            padding: 2rem;
+            position: relative;
         }
-        .container {
-            max-width: 800px;
-            padding: 20px;
+
+        .cyber-badge {
+            background: var(--glass);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
         }
+
         h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+        }
+
+        .hero-sub {
+            font-size: 1.5rem;
+            color: #888;
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            color: #fff;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- Features section --- */
+        section {
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
             font-size: 3rem;
-            background: linear-gradient(to right, #00f2ff, #39ff14);
+            margin-bottom: 10px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .card p {
+            color: #aaa;
+        }
+
+        /* --- Special Feature: Smart scan --- */
+        .smart-banner {
+            background: linear-gradient(90deg, rgba(0, 242, 255, 0.1), rgba(57, 255, 20, 0.1));
+            border-radius: 30px;
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-top: 50px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .smart-text h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        p {
-            color: #8e8e93;
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+
+        /* --- Installation --- */
+        .code-block {
+            background: #000;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--secondary);
+            border-left: 4px solid var(--secondary);
+            margin: 20px 0;
+            font-size: 0.9rem;
         }
-        .live-preview {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 0 50px rgba(0, 242, 255, 0.1);
+
+        footer {
+            padding: 50px;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            color: #555;
         }
-        .btn {
-            background: linear-gradient(135deg, var(--primary), #00d2ff);
-            color: #000;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-            display: inline-block;
-            transition: transform 0.2s;
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
-        .btn:hover {
-            transform: scale(1.05);
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .smart-banner {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
+    <div class="bg-glow"></div>
+
+    <header>
+        <div class="cyber-badge">SISTEMA V14 DE ALTO RENDIMIENTO</div>
         <h1>Barcode Scanner Pro</h1>
-        <p>A professional 1D barcode scanner with real-time detection, Cyber-Glass UI, and smart analytics.</p>
-        
-        <div class="live-preview">
-            <h2 style="color: var(--primary);">UI Demo Profile</h2>
-            <p>This is a static showcase. To use the full scanning features, please clone the repository and run the backend server.</p>
-            <a href="https://github.com" class="btn">View on GitHub</a>
+        <p class="hero-sub">El escáner de códigos de barras más avanzado, inteligente y visualmente impactante jamás
+            creado para la web.</p>
+
+        <div class="cta-group">
+            <a href="https://github.com/Ivancitoo-N/Barcode-scanner" class="btn btn-primary">Ver Código en GitHub</a>
+            <a href="#features" class="btn btn-secondary">Explorar Funciones</a>
         </div>
-        
-        <div style="margin-top: 30px; font-size: 0.8rem; color: #555;">
-            Built with Fast API, OpenCV, and Passion.
+    </header>
+
+    <section id="features">
+        <div class="section-title">
+            <h2>Potencia Sin Límites</h2>
+            <p style="color: #666;">Diseñado para ser rápido, fiable y estéticamente superior.</p>
         </div>
-    </div>
+
+        <div class="feature-grid">
+            <div class="card">
+                <span class="card-icon">⚡</span>
+                <h3>Velocidad Extrema</h3>
+                <p>Procesamiento en tiempo real con OpenCV capaz de detectar múltiples formatos (EAN, Code128, etc.) en
+                    milisegundos.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🧠</span>
+                <h3>Memoria Local AI</h3>
+                <p>El escáner aprende de ti. Si nombras un producto desconocido, lo recordará para siempre y lo
+                    reconocerá automáticamente la próxima vez.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">📊</span>
+                <h3>Analíticas en Vivo</h3>
+                <p>Gráficos profesionales que muestran tu actividad de escaneo por horas. Visualiza tu flujo de trabajo
+                    de forma clara.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🛡️</span>
+                <h3>Persistencia Segura</h3>
+                <p>Base de datos SQLite integrada con copias de seguridad automáticas cada 10 minutos. Tus datos nunca
+                    se pierden.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🔊</span>
+                <h3>Feedback Inmersivo</h3>
+                <p>Respuesta sonora "beep" y efectos visuales de escaneo tipo Cyber-Glass para una experiencia de
+                    usuario premium.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">📂</span>
+                <h3>Exportación Total</h3>
+                <p>Lleva tus datos donde quieras. Exportación nativa a CSV y JSON con un solo clic.</p>
+            </div>
+        </div>
+
+        <div class="smart-banner">
+            <div style="font-size: 4rem;">🔬</div>
+            <div class="smart-text">
+                <h3>Escaneo Inteligente & Auto-Add</h3>
+                <p>Nuestra tecnología diferencia entre productos conocidos y nuevos. Si ya existe en la base de datos o
+                    en memorias globales, se añade al instante sin interrumpir tu flujo de trabajo (Modo Auto-Add).</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-title">
+            <h2>Empieza en Segundos</h2>
+        </div>
+        <div
+            style="max-width: 800px; margin: 0 auto; background: var(--glass); padding: 40px; border-radius: 20px; border: 1px solid var(--glass-border);">
+            <p>1. Clona el repositorio y entra en la carpeta.</p>
+            <p>2. Ejecuta el asistente de instalación inteligente:</p>
+            <div class="code-block">
+                start.bat
+            </div>
+            <p>3. Abre tu navegador en <b>localhost:8000</b> y empieza el futuro.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Desarrollado con pasión • Diseño Cyber-Glass • 2024</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>

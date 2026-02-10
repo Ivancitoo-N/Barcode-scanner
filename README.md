@@ -1,64 +1,64 @@
 # Barcode Scanner Pro 🚀
 
-A professional, high-performance 1D barcode scanner built with Python, OpenCV, and FastAPI. Featuring a sleek "Cyber-Glass" UI, real-time analytics, and automatic product identification.
+Un escáner de códigos de barras 1D de alto rendimiento y grado profesional, construido con Python, OpenCV y FastAPI. Cuenta con una elegante interfaz "Cyber-Glass", analíticas en tiempo real e identificación automática de productos.
 
-![Preview](C:/Users/ivanc/.gemini/antigravity/brain/6cacab0d-776f-4115-8997-a664c541d017/uploaded_media_1770152238713.png)
+![Vista Previa](https://raw.githubusercontent.com/Ivancitoo-N/Barcode-scanner/main/brain/uploaded_media_1770152238713.png)
 
-## ✨ Features
+## ✨ Características
 
-- **Real-time 1D Barcode Detection**: Supports EAN-13, EAN-8, Code128, Code39, UPCA, UPCE.
-- **Cyber-Glass UI**: Modern, glassmorphic design with neon accents and pulsating scanline effects.
-- **Audio Feedback**: Synthesized "beep" sound upon successful detection.
-- **Smart Scanning**: Automatically adds recognized products to the history (Auto-Add).
-- **Local Memory**: Learns custom names for barcodes and suggests them for future scans.
-- **Analytics Dashboard**: Real-time hourly scan activity chart using Chart.js.
-- **Robust Persistence**: SQLite Database with automatic 10-minute backups.
-- **Export Options**: Download your scan history as CSV or JSON.
-- **Flashlight Mode**: Full-screen white illumination for better scanning in low-light environments.
+- **Detección de Códigos 1D en Tiempo Real**: Soporta EAN-13, EAN-8, Code128, Code39, UPCA, UPCE.
+- **Interfaz Cyber-Glass**: Diseño moderno y glassmórfico con acentos neón y efectos de escaneo pulsantes.
+- **Feedback Auditivo**: Sonido "beep" sintetizado tras cada detección exitosa.
+- **Escaneo Inteligente**: Añade automáticamente productos reconocidos al historial (Auto-Add).
+- **Memoria Local**: Aprende nombres personalizados para códigos de barras y los sugiere en futuros escaneos.
+- **Panel de Analíticas**: Gráfico interactivo de actividad de escaneo por horas (Chart.js).
+- **Persistencia Robusta**: Base de datos SQLite con copias de seguridad automáticas cada 10 minutos.
+- **Opciones de Exportación**: Descarga tu historial en formatos CSV o JSON.
+- **Modo Linterna**: Iluminación blanca a pantalla completa para escanear en entornos con poca luz.
 
-## 🛠 Technology Stack
+## 🛠 Tecnologías Utilizadas
 
 - **Backend**: FastAPI (Python), SQLAlchemy, SQLite
-- **Vision**: OpenCV, pyzbar, numpy
-- **Frontend**: Vanilla HTML5, CSS3 (Glassmorphism), JavaScript (Chart.js)
+- **Visión Artificial**: OpenCV, pyzbar, numpy
+- **Frontend**: HTML5, CSS3 (Glassmorphism), JavaScript (Chart.js)
 
-## 🚀 Installation & Setup
+## 🚀 Instalación y Configuración
 
-1. **Prerequisites**: Ensure you have **Python 3.8+** installed.
-2. **Setup**:
-   Run the startup script (Windows) to create a virtual environment and install all dependencies:
+1. **Requisitos**: Asegúrate de tener **Python 3.8+** instalado.
+2. **Configuración**:
+   Ejecuta el script de inicio (Windows) para crear el entorno virtual e instalar las dependencias automáticamente:
    ```cmd
    start.bat
    ```
-   *Alternatively, manually:*
+   *Alternativamente, de forma manual:*
    ```bash
    python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   source .venv/bin/activate  # En Windows: .venv\Scripts\activate
    pip install -r requirements.txt
    python main.py
    ```
 
-## 📖 Usage
+## 📖 Modo de Uso
 
-1. Open http://localhost:8000 in your browser.
-2. Allow webcam access.
-3. Show a barcode to the camera. 
-4. **Smart Mode**: If the product is recognized via API or local memory, it's added automatically.
-5. **Manual Mode**: If new, enter the product name in the popup.
-6. Toggle **Flashlight Mode** (🔦/💡) if needed for extra light.
+1. Abre http://localhost:8000 en tu navegador.
+2. Permite el acceso a la cámara.
+3. Muestra un código de barras a la cámara. 
+4. **Modo Inteligente**: Si el producto se reconoce por API o memoria local, se añade solo.
+5. **Modo Manual**: Si es nuevo, introduce el nombre en la ventana emergente.
+6. Activa el **Modo Linterna** (🔦/💡) si necesitas luz extra.
 
-## 📁 Project Structure
-- `backend/`: Core logic, vision pipeline, and database management.
-- `frontend/`: Templates (HTML) and static assets (CSS, JS).
-- `main.py`: Entry point for the FastAPI server.
-- `barcodes.db`: Local SQLite database (auto-generated).
-- `backups/`: Rotating database backups.
+## 📁 Estructura del Proyecto
+- `backend/`: Lógica central, procesamiento de visión y gestión de base de datos.
+- `frontend/`: Plantillas (HTML) y archivos estáticos (CSS, JS).
+- `main.py`: Punto de entrada del servidor FastAPI.
+- `barcodes.db`: Base de datos SQLite (generada automáticamente).
+- `backups/`: Copias de seguridad rotativas.
 
-## 🔧 Troubleshooting
+## 🔧 Solución de Problemas
 
-- **Camera Error**: Ensure no other application is using your webcam.
-- **Slow Detection**: Improve lighting or use **Flashlight Mode**.
-- **Audio Issues**: Click anywhere on the page once to enable audio playback (browser policy).
+- **Error de Cámara**: Asegúrate de que ninguna otra aplicación esté usando la cámara.
+- **Detección Lenta**: Mejora la iluminación o usa el **Modo Linterna**.
+- **Problemas de Audio**: Haz clic en cualquier parte de la página una vez para habilitar el sonido (política del navegador).
 
 ---
-Developed for speed, aesthetics, and reliability. 📦💨
+Desarrollado para ofrecer velocidad, estética y fiabilidad. 📦💨

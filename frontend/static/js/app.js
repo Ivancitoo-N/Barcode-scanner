@@ -65,7 +65,7 @@ function initChart() {
         data: {
             labels: [],
             datasets: [{
-                label: 'Scans',
+                label: 'Escaneos',
                 data: [],
                 borderColor: '#00f2ff',
                 backgroundColor: 'rgba(0, 242, 255, 0.1)',
@@ -98,7 +98,7 @@ async function updateChart() {
         trendsChart.data.labels = stats.labels;
         trendsChart.data.datasets[0].data = stats.data;
         trendsChart.update();
-    } catch (e) { console.error("Stats fetch failed", e); }
+    } catch (e) { console.error("Error al obtener estadísticas:", e); }
 }
 
 // Flashlight Toggle
@@ -114,7 +114,7 @@ btnFlashlight.addEventListener('click', () => {
 // --- Event Listeners ---
 const btnClearAll = document.getElementById('btn-clear-all');
 btnClearAll.addEventListener('click', async () => {
-    if (confirm('Are you sure you want to CLEAR ALL history? This cannot be undone.')) {
+    if (confirm('¿Estás seguro de que quieres BORRAR TODO el historial? Esta acción no se puede deshacer.')) {
         await fetch('/api/codes/all', { method: 'DELETE' });
         allCodes = [];
         scannedCodes.clear();
@@ -153,11 +153,11 @@ setInterval(async () => {
                 audio.beep();
                 const ov = document.getElementById('overlay');
                 ov.style.background = isKnown ? 'var(--accent)' : 'var(--primary)';
-                ov.textContent = isKnown ? `RECOGNIZED (${codeObj.scan_count}x)` : 'NEW CODE';
+                ov.textContent = isKnown ? `RECONOCIDO (${codeObj.scan_count}x)` : 'NUEVO CÓDIGO';
 
                 setTimeout(() => {
                     ov.style.background = 'rgba(0, 0, 0, 0.6)';
-                    ov.textContent = 'Scanning...';
+                    ov.textContent = 'Escaneo Activo...';
                 }, 1000);
 
                 if (isKnown) {
@@ -168,7 +168,7 @@ setInterval(async () => {
             }
         }
     } catch (e) {
-        console.error("Polling error:", e);
+        console.error("Error de sondeo (polling):", e);
     }
 }, 500);
 
@@ -190,7 +190,7 @@ async function saveCode(codeObj) {
         updateStats();
         updateChart();
     } catch (e) {
-        console.error("Save failed", e);
+        console.error("Error al guardar:", e);
     }
 }
 
@@ -206,7 +206,7 @@ async function fetchCodes() {
         filterAndRender();
         updateStats();
     } catch (e) {
-        console.error("Failed to fetch codes:", e);
+        console.error("Error al obtener códigos:", e);
     }
 }
 
@@ -267,7 +267,7 @@ function renderCodeItem(codeObj) {
 
 // Global scope for onclick
 window.deleteCode = async (id) => {
-    if (!confirm('Delete this code?')) return;
+    if (!confirm('¿Eliminar este código?')) return;
     try {
         await fetch(`/api/codes/${id}`, { method: 'DELETE' });
 
@@ -286,7 +286,7 @@ window.deleteCode = async (id) => {
         updateStats();
         updateChart();
     } catch (e) {
-        console.error("Delete failed", e);
+        console.error("Error al eliminar:", e);
     }
 };
 
@@ -295,7 +295,7 @@ function updateStats() {
 
     const today = new Date().toDateString();
     const countToday = allCodes.filter(c => new Date(c.timestamp).toDateString() === today).length;
-    statsToday.textContent = `Today: ${countToday}`;
+    statsToday.textContent = `Hoy: ${countToday}`;
 }
 
 function openModal(codeObj) {
@@ -305,7 +305,7 @@ function openModal(codeObj) {
     modalProductInput.value = (codeObj.product_name && codeObj.product_name !== "Product Unknown") ? codeObj.product_name : "";
 
     // Add count to modal
-    modalType.innerHTML = `${codeObj.type} ${codeObj.scan_count > 1 ? `<br><span style="color:var(--accent)">Scanned ${codeObj.scan_count} times before</span>` : ''}`;
+    modalType.innerHTML = `${codeObj.type} ${codeObj.scan_count > 1 ? `<br><span style="color:var(--accent)">Escaneado ${codeObj.scan_count} veces previamente</span>` : ''}`;
 
     modal.classList.remove('hidden');
 
@@ -320,7 +320,7 @@ function closeModal() {
 
 btnAdd.addEventListener('click', async () => {
     if (pendingCode) {
-        pendingCode.product_name = modalProductInput.value || "Custom Product";
+        pendingCode.product_name = modalProductInput.value || "Producto Personalizado";
         await saveCode(pendingCode);
         closeModal();
         setTimeout(() => { isModalOpen = false; }, 1000);
