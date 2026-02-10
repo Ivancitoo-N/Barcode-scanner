@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Scanner Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar / List Panel -->
+        <aside class="sidebar">
+            <div class="header">
+                <h2>Scanned Codes</h2>
+                <div class="stats">
+                    Total: <span id="total-count">0</span> | <span id="stats-today">Today: 0</span>
+                </div>
+
+                <div class="history-controls"
+                    style="margin-top: 15px; display: flex; flex-direction: column; gap: 8px;">
+                    <input type="text" id="search-input" placeholder="Search products..."
+                        style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border); background: #2a2a35; color: white; font-size: 0.9rem;">
+                    <div style="display: flex; gap: 5px;">
+                        <select id="sort-select"
+                            style="flex-grow: 1; padding: 5px; border-radius: 4px; border: 1px solid var(--border); background: #2a2a35; color: white; font-size: 0.8rem;">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="name">Name (A-Z)</option>
+                        </select>
+                        <button id="btn-flashlight" class="btn btn-secondary" style="font-size: 0.8rem; padding: 5px;"
+                            title="Toggle Screen Light">🔦</button>
+                    </div>
+                </div>
+
+                <div class="actions" style="margin-top: 10px; display: flex; gap: 5px; justify-content: center;">
+                    <a href="/api/export/csv" target="_blank" class="btn btn-secondary"
+                        style="font-size: 0.75rem; padding: 4px 8px; text-decoration: none;">Export CSV</a>
+                    <a href="/api/export/json" target="_blank" class="btn btn-secondary"
+                        style="font-size: 0.75rem; padding: 4px 8px; text-decoration: none;">Export JSON</a>
+                    <button id="btn-clear-all" class="btn btn-secondary"
+                        style="font-size: 0.75rem; padding: 4px 8px; color: var(--danger);">Clear All</button>
+                </div>
+
+                <div class="analytics-card"
+                    style="margin-top: 20px; background: rgba(0,0,0,0.2); border-radius: 12px; padding: 10px; border: 1px solid var(--glass-border);">
+                    <h4
+                        style="font-size: 0.7rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 1px;">
+                        Hourly Scan Activity</h4>
+                    <canvas id="trendsChart" height="150"></canvas>
+                </div>
+            </div>
+            <ul id="code-list" class="code-list">
+                <!-- Codes will appear here -->
+            </ul>
+        </aside>
+
+        <!-- Main Video Area -->
+        <main class="main-content">
+            <div class="video-container">
+                <img src="/video_feed" alt="Video Feed">
+                <div class="overlay" id="overlay">SCANNING...</div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Template -->
+    <div id="confirm-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>New Code Detected</h3>
+            <p id="modal-code-display" class="modal-code">123456789</p>
+            <div style="margin-bottom: 1.5rem;">
+                <label for="modal-product-input"
+                    style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 5px;">Product
+                    Name:</label>
+                <input type="text" id="modal-product-input"
+                    style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border); background: #2a2a35; color: white; font-size: 1.1rem; text-align: center;">
+            </div>
+            <p id="modal-type-display" class="modal-type">EAN-13</p>
+            <div class="modal-actions">
+                <button id="btn-ignore" class="btn btn-secondary">Ignore</button>
+                <button id="btn-add" class="btn btn-primary">Add to List</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+
+</html>

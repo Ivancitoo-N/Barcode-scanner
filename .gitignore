@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+.env
+
+# Database
+*.db
+backups/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Media
+C:/Users/ivanc/.gemini/antigravity/brain/6cacab0d-776f-4115-8997-a664c541d017/*.png
+C:/Users/ivanc/.gemini/antigravity/brain/6cacab0d-776f-4115-8997-a664c541d017/*.webp

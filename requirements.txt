@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+opencv-python
+pyzbar
+python-multipart
+jinja2
+sqlalchemy
+numpy
+requests
