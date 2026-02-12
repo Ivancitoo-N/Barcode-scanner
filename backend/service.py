@@ -111,11 +111,12 @@ class BarcodeService:
                 if not self.is_duplicate(data):
                     code['is_new'] = True
                     
-                    last_name, count = (None, 0)
+                    last_name, price, count = (None, None, 0)
                     if db_metadata_func:
-                        last_name, count = db_metadata_func(data)
+                        last_name, price, count = db_metadata_func(data)
                     
                     code['product_name'] = self.get_product_name(data, db_name=last_name)
+                    code['price'] = price
                     code['scan_count'] = count + 1 # Include current scan
                 else:
                     code['is_new'] = False

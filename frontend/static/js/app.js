@@ -337,3 +337,44 @@ modalProductInput.addEventListener('keypress', (e) => {
         btnAdd.click();
     }
 });
+
+// --- PDF Export & New Client Workflow ---
+const btnExportPDF = document.getElementById('btn-export-pdf');
+const newClientModal = document.getElementById('new-client-modal');
+const btnContinueClient = document.getElementById('btn-continue-client');
+const btnNewClient = document.getElementById('btn-new-client');
+
+btnExportPDF.addEventListener('click', () => {
+    // 1. Trigger Download
+    window.open('/api/export/pdf', '_blank');
+
+    // 2. Show "New Client" Dialog
+    newClientModal.classList.remove('hidden');
+    isModalOpen = true; // Prevent scanning while dialog is open
+});
+
+btnContinueClient.addEventListener('click', () => {
+    newClientModal.classList.add('hidden');
+    setTimeout(() => { isModalOpen = false; }, 500);
+});
+
+btnNewClient.addEventListener('click', async () => {
+    // 1. Clear Database
+    try {
+        await fetch('/api/codes/all', { method: 'DELETE' });
+
+        // 2. Clear Local State
+        allCodes = [];
+        scannedCodes.clear();
+        filterAndRender();
+        updateStats();
+        updateChart();
+
+        // 3. Close Modal
+        newClientModal.classList.add('hidden');
+        setTimeout(() => { isModalOpen = false; }, 500);
+    } catch (e) {
+        console.error("Error al limpiar para nuevo cliente:", e);
+        alert("Error al intentar iniciar nuevo cliente. Por favor intente 'Borrar Todo' manualmente.");
+    }
+});

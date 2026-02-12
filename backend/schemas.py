@@ -18,10 +18,12 @@ class ScannedCodeBase(BaseModel):
 
 class ScannedCodeCreate(ScannedCodeBase):
     product_name: Optional[str] = None
+    price: Optional[float] = None
 
 class ScannedCodeResponse(ScannedCodeBase):
     id: Optional[int] = None
     product_name: Optional[str] = None
+    price: Optional[float] = None
     timestamp: datetime = Field(default_factory=datetime.now)
     
     class Config:

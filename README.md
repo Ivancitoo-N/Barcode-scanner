@@ -13,7 +13,11 @@ Un escáner de códigos de barras 1D de alto rendimiento y grado profesional, co
 - **Memoria Local**: Aprende nombres personalizados para códigos de barras y los sugiere en futuros escaneos.
 - **Panel de Analíticas**: Gráfico interactivo de actividad de escaneo por horas (Chart.js).
 - **Persistencia Robusta**: Base de datos SQLite con copias de seguridad automáticas cada 10 minutos.
-- **Opciones de Exportación**: Descarga tu historial en formatos CSV o JSON.
+- **Exportación a PDF Profesional**: Genera facturas detalladas con agrupación de productos, cantidades y totales calculados.
+- **Seguimiento de Ventas (Excel)**: Registro automático de transacciones en `sales.xlsx` para futuro control de stock.
+- **Flujo de Trabajo para Clientes**: Sistema de "Nuevo Cliente" que permite cerrar ventas y exportar datos de forma organizada.
+- **Base de Datos de Precios**: Ahora registra el precio unitario y total de cada escaneo.
+- **Opciones de Exportación**: Descarga tu historial en formatos CSV, JSON o PDF.
 - **Modo Linterna**: Iluminación blanca a pantalla completa para escanear en entornos con poca luz.
 
 ## 🛠 Tecnologías Utilizadas

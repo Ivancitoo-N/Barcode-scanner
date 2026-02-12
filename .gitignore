@@ -10,6 +10,7 @@ ENV/
 # Database
 *.db
 backups/
+*.xlsx
 
 # OS specific
 .DS_Store

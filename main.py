@@ -116,8 +116,18 @@ async def read_codes(skip: int = 0, limit: int = 100, db: Session = Depends(data
     codes = crud.get_codes(db, skip=skip, limit=limit)
     return codes
 
+from backend.sales_tracker import SalesTracker
+
 @app.delete("/api/codes/all")
 async def delete_all_codes(db: Session = Depends(database.get_db)):
+    # 1. Fetch current codes for sales log
+    codes = crud.get_codes(db, limit=10000)
+    
+    # 2. Log to Excel
+    if codes:
+        SalesTracker().log_sale(codes)
+        
+    # 3. Clear database
     crud.delete_all_codes(db)
     return {"status": "success"}
 
@@ -169,6 +179,20 @@ async def export_json(db: Session = Depends(database.get_db)):
     return JSONResponse(
         content=data,
         headers={"Content-Disposition": f"attachment; filename=codes_{timestamp}.json"}
+    )
+
+from backend.pdf_generator import PDFGenerator
+
+@app.get("/api/export/pdf")
+async def export_pdf(db: Session = Depends(database.get_db)):
+    codes = crud.get_codes(db, limit=10000) # Fetch all codes
+    pdf_bytes = PDFGenerator().generate(codes)
+    
+    timestamp = time.strftime("%Y%m%d-%H%M")
+    return Response(
+        content=bytes(pdf_bytes),
+        media_type="application/pdf",
+        headers={"Content-Disposition": f"attachment; filename=lista_compra_{timestamp}.pdf"}
     )
 
 import shutil

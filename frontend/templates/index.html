@@ -38,6 +38,9 @@
                 </div>
 
                 <div class="actions" style="margin-top: 10px; display: flex; gap: 5px; justify-content: center;">
+                    <button id="btn-export-pdf" class="btn btn-secondary"
+                        style="font-size: 0.75rem; padding: 4px 8px; text-decoration: none; color: white;">Exp.
+                        PDF</button>
                     <a href="/api/export/csv" target="_blank" class="btn btn-secondary"
                         style="font-size: 0.75rem; padding: 4px 8px; text-decoration: none;">Exp. CSV</a>
                     <a href="/api/export/json" target="_blank" class="btn btn-secondary"
@@ -84,6 +87,21 @@
             <div class="modal-actions">
                 <button id="btn-ignore" class="btn btn-secondary">Ignorar</button>
                 <button id="btn-add" class="btn btn-primary">Añadir a la Lista</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Client Modal -->
+    <div id="new-client-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Documento Generado</h3>
+            <p>Se ha generado la lista en PDF.</p>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">¿Desea continuar agregando productos al cliente
+                actual o iniciar un nuevo cliente (borrando la lista)?</p>
+            <div class="modal-actions">
+                <button id="btn-continue-client" class="btn btn-secondary">Continuar con Cliente</button>
+                <button id="btn-new-client" class="btn btn-primary" style="background: var(--danger);">Nuevo
+                    Cliente</button>
             </div>
         </div>
     </div>
