@@ -20,6 +20,27 @@ Un escáner de códigos de barras 1D de alto rendimiento y grado profesional, co
 - **Opciones de Exportación**: Descarga tu historial en formatos CSV, JSON o PDF.
 - **Modo Linterna**: Iluminación blanca a pantalla completa para escanear en entornos con poca luz.
 
+## 📈 Evolución del Proyecto
+
+El desarrollo se estructuró en 6 etapas clave para garantizar un sistema profesional y fiable:
+
+- **Etapa 0: Configuración**: Preparación del entorno (pyzbar, OpenCV) y tests de hardware.
+- **Etapa 1: Visión Artificial**: Implementación de la lógica de lectura de códigos 1D en tiempo real.
+- **Etapa 2: Interfaz Cyber-Glass**: Diseño estético avanzado y sistema de notificaciones de productos nuevos.
+- **Etapa 2.5: Validación**: Gestión de errores, manejo de falsos positivos y feedback auditivo.
+- **Etapa 3: Persistencia**: Integración total con SQLite para almacenamiento local permanente.
+- **Etapa 4: Seguridad y Backups**: Sistema de copias de seguridad automáticas y exportación multiformato.
+- **Etapa 5: Calidad**: Pruebas automatizadas y documentación final.
+
+## 📅 Diario de Desarrollo (Resumen)
+
+*Para ver el log completo y detallado, consulta el [Desarrollo Histórico](docs/DEVELOPMENT_LOG.md).*
+
+- **3/2/2026 20:33**: Superados problemas iniciales con el acceso a frames de la cámara.
+- **3/2/2026 20:55**: Implementado sistema de escaneo único (evita duplicados accidentales).
+- **3/2/2026 21:23**: Finalizada Etapa 4 con persistencia total en `barcodes.db`.
+- **3/2/2026 23:16**: **¡Proyecto Completado!** Ejecución exitosa de todos los objetivos.
+
 ## 🛠 Tecnologías Utilizadas
 
 - **Backend**: FastAPI (Python), SQLAlchemy, SQLite
